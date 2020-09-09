@@ -79,9 +79,7 @@ def main():
     X_scaled[X_scaled.columns[range(0,36)]] = X_scaled1
     
     
-    
-    
-    
+
     y_pred = model.predict(X_scaled)
     
     print((mean_squared_error(y_test, y_pred))**(1/2))
