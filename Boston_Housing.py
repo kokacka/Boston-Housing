@@ -40,14 +40,15 @@ def load_prepp_data(path='/Users/CJ/Documents/Kaggle/Boston housing prices',
                                                             random_state=42)
     return X_train, X_test, y_train , y_test
 
-def model(X=X_train, y=y_train):
-    model = LinearRegression()
-    return model.fit(X, y)
+def model(X, y):
+    clf = LinearRegression()
+    clf.fit(X, y)
+    return clf
 
 
-def predict(X_test=X_test, y_test=y_test): 
+def predict(X_test, y_test, clf): 
     
-    y_pred = model.predict(X_test)
+    y_pred = clf.predict(X_test)
     result = (mean_squared_error(y_test, y_pred))**(1/2)
     
     return result
@@ -56,6 +57,6 @@ def predict(X_test=X_test, y_test=y_test):
 
 if __name__ == "__main__":
     X_train, X_test, y_train , y_test = load_prepp_data()
-    model(X_train,y_train)
-    result = predict(X_test,y_test) 
+    clf = model(X_train,y_train)
+    result = predict(X_test,y_test,model) 
     print(result)
